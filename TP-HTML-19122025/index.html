@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription à un événement</title>
+    <meta name="description" content="Formulaire d'inscription à un événement, liste des anciens événements et section contact.">
+</head>
+<body>
+    <header>
+        <h1>Inscription à un événement</h1>
+        <!-- 
+            <nav> : la balise aide les lecteurs d'écran et les moteurs de recherche à identifier
+            les liens de navigation de la page. aria-label améliore l'accessibilité.
+        -->
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#tutoriel">Tutoriel</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#anciens">Anciens événements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>       
+    <main aria-label="Contenu principal">
+
+        <!-- 
+            <section> : la balise aide à structurer le document et améliore la compréhension par les lecteurs d'écran.
+            L'id permet la navigation par ancre (#home).
+            role="region" : définit cette section comme une région nommée pour les lecteurs d'écran.
+        -->
+        <section id="home" aria-label="Section Accueil">
+            <h2>Bienvenue</h2>
+            <!-- 
+                <article> : la balise est utilisée pour un billet de blog, une fiche produit ou un contenu indépendant.
+                Cela améliore l'accessibilité et le référencement SEO.
+            -->
+            <article>
+                <img src="assets/images/welcome.webp" alt="Bienvenue à notre plateforme d'inscription aux événements" aria-label="Image d'accueil montrant l'événement">
+                <h3>Page d'accueil</h3>
+                <p>Bienvenue sur notre plateforme d'inscription aux événements. Découvrez nos prochains événements et inscrivez-vous facilement.</p>
+                <p>Notre mission est de vous proposer des événements de qualité, des conférences et des ateliers pour développer vos compétences dans le domaine de la technologie et du design.</p>
+            </article>
+            <article>
+                <h3>Nos services</h3>
+                <ul>
+                    <li>Inscription simple et rapide aux événements</li>
+                    <li>Accès à la liste des événements passés</li>
+                    <li>Support client réactif et disponible</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="tutoriel" aria-label="Section Tutoriel">
+            <h2>Tutoriel</h2>
+            <article>
+                <h3>Vidéo de présentation</h3>
+                <p>Découvrez comment vous inscrire et participer à nos événements :</p>
+                <video width="600" height="400" controls aria-label="Vidéo tutoriel d'inscription aux événements">
+                    <source src="assets/videos/tutoriel.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                </video>
+            </article>
+            <article>
+                <h3>Vidéo complémentaire</h3>
+                <p>Regardez notre vidéo YouTube :</p> 
+                <!--
+                Une erreur est survenue dans la vidéo YouTube intégrée 
+                    -> the frameborder attribute on the iframe element is obsolete 
+                mais pour ne pas utiliser de CSS, on le laisse ici.
+                 -->
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/GYmFjApmiP0?si=8spx4wZEV32jrpuO" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
+
+            </article>
+        </section>
+
+        <section id="tarifs" aria-label="Section Tarifs">
+            <h2>Tarifs</h2>
+            <article>
+                <h3>Nos offres de tarification</h3>
+                <table aria-label="Tableau des tarifs et offres">
+                    <thead>
+                        <tr>
+                            <th scope="col">Type d'événement</th>
+                            <th scope="col">Prix par personne</th>
+                            <th scope="col">Accès inclus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Conférence standard</td>
+                            <td>25 €</td>
+                            <td>Accès à la conférence</td>
+                        </tr>
+                        <tr>
+                            <td>Atelier pratique</td>
+                            <td>50 €</td>
+                            <td>Accès + matériel inclus</td>
+                        </tr>
+                        <tr>
+                            <td>Pass annuel</td>
+                            <td>200 €</td>
+                            <td>Accès illimité à tous les événements</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+
+        <section id="anciens" aria-label="Section Anciens Événements">
+            <h2>Anciens événements</h2>
+            <article>
+                <h3>Conférence Web 2024</h3>
+                <p><strong>Date:</strong> 12 juin 2024 — <strong>Lieu:</strong> Centre Tech</p>
+                <p>Résumé: Conférence sur les tendances et bonnes pratiques du développement web.</p>
+            </article>
+            <article>
+                <h3>Atelier Design 2023</h3>
+                <p><strong>Date:</strong> 5 septembre 2023 — <strong>Lieu:</strong> Atelier Créatif</p>
+                <p>Résumé: Atelier pratique sur la conception d'interfaces et l'expérience utilisateur.</p>
+            </article>
+        </section>
+
+        <section id="contact" aria-label="Section Contact">
+            <h2>Contact</h2>
+            <p>Pour toute question concernant l'événement ou l'inscription, contactez-nous :</p>
+            <address>
+                Email: <a href="mailto:contact@evenement.example">contact@evenement.example</a><br>
+                Téléphone: +33 1 23 45 67 89
+            </address>
+            <article>
+                <h3>Formulaire de contact</h3> 
+                <!-- 
+                    Les attributs data-* sont utilisés pour stocker des données personnalisées en HTML5.
+                    Ils permettent d'accéder facilement aux données avec dataset
+                       => Exemple : element.dataset.formType, element.dataset.fieldName 
+
+                    - Séparation des données et de la présentation
+                    - Pas de conflit avec les attributs HTML standards
+                    - Accessibles via l'inspecteur DevTools
+                    - Valides en HTML5
+                    - Facilite la maintenance du code
+                -->
+                <form action="#" method="post" aria-label="Formulaire de contact" data-form-type="contact" data-form-section="contact-info">
+                    <label for="cname">Nom <span aria-hidden="true">*</span>:<br>
+                        <input type="text" id="cname" name="cname" placeholder="Entrez votre nom complet" required data-field-type="text" data-field-name="name" data-required="true">
+                    </label>
+                    <br>
+                    <label for="cemail">Email <span aria-hidden="true">*</span>:<br>
+                        <input type="email" id="cemail" name="cemail" placeholder="exemple@email.com" required data-field-type="email" data-field-name="email" data-required="true">
+                    </label>
+                    <br>
+                    <label for="cmessage">Message <span aria-hidden="true">*</span>:<br>
+                        <textarea id="cmessage" name="cmessage" rows="4" placeholder="Écrivez votre message ici..." required data-field-type="textarea" data-field-name="message" data-required="true"></textarea>
+                    </label>
+                    <br>
+                    <button type="submit" aria-label="Envoyer le message de contact" data-button-action="submit" data-form-name="contact">Envoyer</button>
+                </form>
+                <!-- 
+                    <aside> : Elle est utilisée pour afficher des informations supplémentaires liées au formulaire
+                    (avertissements, conseils, notes) mais qui ne font pas partie du contenu principal.
+                    Les lecteurs d'écran la reconnaissent comme contenu secondaire.
+                -->
+                <aside>
+                    <h4>Informations importantes</h4>
+                    <p>Tous les champs marqués avec l'astérisque (*) sont obligatoires. Veuillez remplir complètement le formulaire avant de soumettre votre message.</p>
+                </aside>
+            </article>
+        </section>
+
+    </main>
+    <footer>
+        <div role="region" aria-label="Informations de copyright">
+            <p>&copy; 2025 Événements</p>
+        </div>
+        <div role="region" aria-label="Coordonnées de contact du footer">
+            <p>Email: <a href="mailto:contact@evenement.example">contact@evenement.example</a><br>
+            Téléphone: +33 1 23 45 67 89</p>
+        </div>
+    </footer>
+</body>
+</html>
