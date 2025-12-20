@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription à un événement</title>
+    <link rel="stylesheet" href="css/style.css">
     <meta name="description" content="Formulaire d'inscription à un événement, liste des anciens événements et section contact.">
 </head>
 <body>
@@ -14,7 +15,13 @@
             les liens de navigation de la page. aria-label améliore l'accessibilité.
         -->
         <nav aria-label="Navigation principale">
-            <ul>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+            <label for="menu-toggle" class="menu-icon" aria-label="Ouvrir le menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="menu-items">
                 <li><a href="#home">Accueil</a></li>
                 <li><a href="#tutoriel">Tutoriel</a></li>
                 <li><a href="#tarifs">Tarifs</a></li>
@@ -210,10 +217,10 @@
 
     </main>
     <footer>
-        <div role="region" aria-label="Informations de copyright">
+        <div role="region" id="footer-copyright" aria-label="Informations de copyright">
             <p>&copy; 2025 Événements</p>
         </div>
-        <div role="region" aria-label="Coordonnées de contact du footer">
+        <div role="region" id="footer-contact" aria-label="Coordonnées de contact du footer">
             <p>Email: <a href="mailto:contact@evenement.example">contact@evenement.example</a><br>
             Téléphone: +33 1 23 45 67 89</p>
         </div>
