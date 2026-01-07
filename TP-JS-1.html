@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP JS 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .input-container {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #333;
+        }
+        button {
+            padding: 10px 30px;
+            font-size: 16px;
+            background-color: #ccc;
+            border: 2px solid #333;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #aaa;
+        }
+        .results {
+            margin-top: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px 20px;
+            text-align: left;
+        }
+        th {
+            background-color: #ccc;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="input-container">
+        <input type="text" id="numbersInput" placeholder="10, 9, 3, 4, 12, 13">
+        <br>
+        <button onclick="valider()">Valider</button>
+    </div>
+
+    <div class="results" id="results" class="hidden">
+        <p><strong>Lorsqu'on valide on afficher les 2 tableaux suivants:</strong></p>
+        
+        <p>1- on affiche les nombres par ordre</p>
+        <table id="table1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="tbody1">
+            </tbody>
+        </table>
+
+        <p>2- on affiche les nombres par ordre (on commence avec le plus grand, ensuite le plus petit, et ainsi de suite)</p>
+        <table id="table2">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="tbody2">
+            </tbody>
+        </table>
+    </div>
+
+<script>
+    function valider() {
+        const input = document.getElementById('numbersInput').value;
+        
+        // Parse the input to get numbers
+        const numbers = input.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+        
+        if (numbers.length === 0) {
+            alert('Veuillez entrer des nombres valides séparés par des virgules');
+            return;
+        }
+
+        // Show results
+        document.getElementById('results').classList.remove('hidden');
+
+        // Table 1: Numbers in order entered
+        const tbody1 = document.getElementById('tbody1');
+        tbody1.innerHTML = '';
+        numbers.forEach(num => {
+            const row = tbody1.insertRow();
+            row.insertCell(0).textContent = num;
+            row.insertCell(1).textContent = num % 2 === 0 ? 'pair' : 'impair';
+        });
+
+        // Table 2: Numbers sorted alternating (largest, smallest, second largest, second smallest, etc.)
+        const sortedNumbers = [...numbers].sort((a, b) => b - a);
+        const alternating = [];
+        let left = 0;
+        let right = sortedNumbers.length - 1;
+        let useLeft = true;
+
+        while (left <= right) {
+            if (useLeft) {
+                alternating.push(sortedNumbers[left]);
+                left++;
+            } else {
+                alternating.push(sortedNumbers[right]);
+                right--;
+            }
+            useLeft = !useLeft;
+        }
+
+        const tbody2 = document.getElementById('tbody2');
+        tbody2.innerHTML = '';
+        alternating.forEach(num => {
+            const row = tbody2.insertRow();
+            row.insertCell(0).textContent = num;
+            row.insertCell(1).textContent = num % 2 === 0 ? 'pair' : 'impair';
+        });
+    }
+</script>
+</body>
+</html>
