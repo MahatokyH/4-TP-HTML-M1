@@ -62,7 +62,7 @@
         <button onclick="valider()">Valider</button>
     </div>
 
-    <div class="results" id="results" class="hidden">
+    <div class="results hidden" id="results">
         <p><strong>Lorsqu'on valide on afficher les 2 tableaux suivants:</strong></p>
         
         <p>1- on affiche les nombres par ordre</p>
@@ -96,8 +96,9 @@
         
         // Parse the input to get numbers
         const numbers = input.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+        const uniqueNumbers = [...new Set(numbers)];
         
-        if (numbers.length === 0) {
+        if (uniqueNumbers.length === 0) {
             alert('Veuillez entrer des nombres valides séparés par des virgules');
             return;
         }
@@ -108,14 +109,14 @@
         // Table 1: Numbers in order entered
         const tbody1 = document.getElementById('tbody1');
         tbody1.innerHTML = '';
-        numbers.forEach(num => {
+        uniqueNumbers.forEach(num => {
             const row = tbody1.insertRow();
             row.insertCell(0).textContent = num;
             row.insertCell(1).textContent = num % 2 === 0 ? 'pair' : 'impair';
         });
 
         // Table 2: Numbers sorted alternating (largest, smallest, second largest, second smallest, etc.)
-        const sortedNumbers = [...numbers].sort((a, b) => b - a);
+        const sortedNumbers = [...uniqueNumbers].sort((a, b) => b - a);
         const alternating = [];
         let left = 0;
         let right = sortedNumbers.length - 1;
